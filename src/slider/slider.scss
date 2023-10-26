@@ -1,0 +1,124 @@
+.slider {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.9s ease;
+
+    .slider-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content {
+      box-sizing: border-box;
+      position: absolute;
+      top: 50rem;
+      left: 5rem;
+      opacity: 0;
+      width: 50%;
+      padding: 3rem;
+      background-color: rgba(0, 0, 0, 0.274);
+      animation: slide-up 1s ease 0.5s;
+      animation-fill-mode: forwards;
+      text-align: left;
+
+      @keyframes slide-up {
+        0% {
+          //visibility: visible;
+          top: 50rem;
+        }
+        100% {
+          visibility: visible;
+          top: 10rem;
+        }
+      }
+      .slider-button {
+        background-color: rgb(103, 155, 155);
+        border-radius: 5px;
+        padding: 0.8rem;
+        border: none;
+        color: #fff;
+        text-align: center;
+        transition: all 0.5s;
+        box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+        cursor: pointer;
+        position: relative;
+
+        &::after {
+          content: "»";
+          position: absolute;
+          opacity: 0;
+          top: 14px;
+          right: 0px;
+          transition: 0.5s;
+          color: #fff;
+        }
+
+        &:hover {
+          padding-right: 24px;
+          padding-left: 8px;
+        }
+        &:hover:after {
+          opacity: 1;
+          right: 10px;
+        }
+      }
+      & > * {
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      .content {
+        width: 60%;
+        height: auto;
+      }
+    }
+  }
+  .current {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 99;
+
+    .content {
+      opacity: 1;
+    }
+  }
+  .slider-arrow {
+    position: absolute;
+    border: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 100;
+    top: 35%;
+
+    &:hover {
+      background-color: #fff;
+      color: #777;
+    }
+  }
+  .prev {
+    left: 1.5rem;
+  }
+  .next {
+    right: 1.5rem;
+  }
+  hr {
+    width: 50%;
+  }
+}
